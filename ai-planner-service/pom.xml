@@ -1,0 +1,45 @@
+<project xmlns="[maven.apache.org](http://maven.apache.org/POM/4.0.0)"
+         xmlns:xsi="[w3.org](http://www.w3.org/2001/XMLSchema-instance)"
+         xsi:schemaLocation="[maven.apache.org](http://maven.apache.org/POM/4.0.0)
+                             [maven.apache.org](https://maven.apache.org/xsd/maven-4.0.0.xsd)">
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <!-- Le vrai parent du projet -->
+  <parent>
+    <groupId>com.taskmanager</groupId>
+    <artifactId>taskmanager-microservices-openai</artifactId>
+    <version>1.0.0</version>
+    <relativePath>../pom.xml</relativePath>
+  </parent>
+
+  <artifactId>ai-planner-service</artifactId>
+  <packaging>jar</packaging>
+  <name>AI Planner Service</name>
+
+  <dependencies>
+    <!-- Dépendance vers la bibliothèque commune -->
+    <dependency>
+      <groupId>com.taskmanager.ai</groupId>
+      <artifactId>ai-common-library</artifactId>
+      <version>1.0.0</version>
+    </dependency>
+
+    <!-- Dépendances Spring Boot ou autres spécifiques à ce service -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>
+

@@ -6,9 +6,14 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="api-gateway" />
+        <module name="ai-assistant-service" />
         <module name="auth-service" />
+        <module name="ai-planner-service" />
+        <module name="ai-ops-service" />
+        <module name="api-gateway" />
+        <module name="ai-common-library" />
         <module name="task-service" />
+        <module name="ai-review-service" />
       </profile>
     </annotationProcessing>
   </component>
