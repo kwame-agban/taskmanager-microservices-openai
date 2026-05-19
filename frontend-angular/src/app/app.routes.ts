@@ -1,11 +1,17 @@
 import { Routes } from '@angular/router';
-import { Login } from './pages/login/login';
-import { Tasks } from './pages/tasks/tasks';
-import { authGuard } from './core/auth.guard';
+import { AiAssistantComponent } from './ai-assistant/ai-assistant';
 
 export const routes: Routes = [
-  { path: 'login', component: Login },
-  { path: 'tasks', component: Tasks, canActivate: [authGuard] },
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
-  { path: '**', redirectTo: 'login' }
+
+  {
+    path: '',
+    redirectTo: 'ai-assistant',
+    pathMatch: 'full'
+  },
+
+  {
+    path: 'ai-assistant',
+    component: AiAssistantComponent
+  }
+
 ];

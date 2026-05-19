@@ -1,0 +1,23 @@
+server:
+  port: ${SERVER_PORT:8084}
+
+spring:
+  application:
+    name: ai-review-service
+
+openai:
+  api-key: ${OPENAI_API_KEY}
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ai-review
+spec:
+  selector:
+    app: ai-review
+  ports:
+    - protocol: TCP
+      port: 8084
+      targetPort: 8084
+  type: ClusterIP

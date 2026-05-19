@@ -3,9 +3,10 @@ package com.taskmanager.ai.assistant;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication
-public class AiSupportApplication {
+
+@SpringBootApplication(scanBasePackages = "com.taskmanager.ai")
+public class AIAssistantApplication {
   public static void main(String[] args) {
-    SpringApplication.run(AiSupportApplication.class, args);
+    SpringApplication.run(AIAssistantApplication.class, args);
   }
 }

@@ -1,0 +1,24 @@
+server:
+  port: ${SERVER_PORT:8083}
+
+spring:
+  application:
+    name: ai-planner-service
+
+openai:
+  api-key: ${OPENAI_API_KEY}
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ai-planner
+spec:
+  selector:
+    app: ai-planner
+  ports:
+    - protocol: TCP
+      port: 8083
+      targetPort: 8083
+  type: ClusterIP
+

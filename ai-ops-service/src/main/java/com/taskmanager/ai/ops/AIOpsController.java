@@ -14,7 +14,8 @@ public class AIOpsController {
   }
   @Scheduled(fixedRate = 1800000)
   public void analyzeMetrics() {
-    String metrics = restTemplate.getForObject("[prometheus](http://prometheus:9090/api/v1/query?query=up)", String.class);
+    //String metrics = restTemplate.getForObject("[prometheus](http://prometheus:9090/api/v1/query?query=up)", String.class);
+    String metrics = restTemplate.getForObject("http://prometheus:9090/api/v1/query?query=up", String.class);
     aiClient.callModel("Analyse ces métriques système et détecte les anomalies:\n" + metrics);
   }
 }

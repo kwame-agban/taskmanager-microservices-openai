@@ -1,0 +1,25 @@
+<div class="ai-container">
+
+  <h2>Assistant IA</h2>
+
+  <textarea
+    [(ngModel)]="query"
+    placeholder="Posez votre question..."
+    rows="5">
+  </textarea>
+
+  <br><br>
+
+  <button (click)="ask()">
+    Envoyer
+  </button>
+
+  <div *ngIf="reply">
+
+    <h3>Réponse IA :</h3>
+
+    <pre>{{ reply }}</pre>
+
+  </div>
+
+</div>

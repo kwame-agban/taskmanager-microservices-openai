@@ -1,0 +1,16 @@
+<div class="ai-assistant">
+  <h3>Assistant IA</h3>
+
+  <textarea
+    [(ngModel)]="question"
+    placeholder="Posez votre question à l’assistant IA...">
+  </textarea>
+
+  <button type="button" (click)="ask()" [disabled]="loading">
+    {{ loading ? 'Analyse en cours...' : 'Envoyer' }}
+  </button>
+
+  <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
+
+  <pre *ngIf="reply">{{ reply }}</pre>
+</div>
