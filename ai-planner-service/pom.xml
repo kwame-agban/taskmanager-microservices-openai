@@ -7,10 +7,9 @@
 
   <!-- Le vrai parent du projet -->
   <parent>
-    <groupId>com.taskmanager</groupId>
-    <artifactId>taskmanager-microservices-openai</artifactId>
+    <groupId>com.example</groupId>
+    <artifactId>taskmanager-microservices</artifactId>
     <version>1.0.0</version>
-    <relativePath>../pom.xml</relativePath>
   </parent>
 
   <artifactId>ai-planner-service</artifactId>
@@ -24,7 +23,6 @@
       <artifactId>ai-common-library</artifactId>
       <version>1.0.0</version>
     </dependency>
-
     <!-- Dépendances Spring Boot ou autres spécifiques à ce service -->
     <dependency>
       <groupId>org.springframework.boot</groupId>

@@ -1,4 +1,10 @@
+version: "3.9"
+
 services:
+
+  # -------------------------
+  # DATABASES
+  # -------------------------
 
   auth-db:
     image: postgres:15
@@ -24,6 +30,10 @@ services:
     volumes:
       - task-db-data:/var/lib/postgresql/data
 
+  # -------------------------
+  # CORE MICROSERVICES
+  # -------------------------
+
   auth-service:
     build:
       context: ./auth-service
@@ -33,7 +43,7 @@ services:
       - .env
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://auth-db:5432/auth_db
-      SECURITY_TOKEN_SECRET: 7fYcIdkDM+IVA5nC4/yCzESPbF2gY7UR+sgU4ig0s4w=
+      SECURITY_TOKEN_SECRET: ${SECURITY_TOKEN_SECRET}
       SERVER_PORT: 8081
     ports:
       - "8081:8081"
@@ -55,6 +65,58 @@ services:
     depends_on:
       - task-db
 
+  # -------------------------
+  # AI MICROSERVICES
+  # -------------------------
+
+  ai-planner-service:
+    build:
+      context: ./ai-planner-service
+      dockerfile: Dockerfile
+    container_name: ai-planner-service
+    environment:
+      SERVER_PORT: 8083
+      OPENAI_API_KEY: ${OPENAI_API_KEY}
+    ports:
+      - "8083:8083"
+
+  ai-review-service:
+    build:
+      context: ./ai-review-service
+      dockerfile: Dockerfile
+    container_name: ai-review-service
+    environment:
+      SERVER_PORT: 8084
+      OPENAI_API_KEY: ${OPENAI_API_KEY}
+    ports:
+      - "8084:8084"
+
+  ai-ops-service:
+    build:
+      context: ./ai-ops-service
+      dockerfile: Dockerfile
+    container_name: ai-ops-service
+    environment:
+      SERVER_PORT: 8085
+      OPENAI_API_KEY: ${OPENAI_API_KEY}
+    ports:
+      - "8085:8085"
+
+  ai-assistant-service:
+    build:
+      context: ./ai-assistant-service
+      dockerfile: Dockerfile
+    container_name: ai-assistant-service
+    environment:
+      SERVER_PORT: 8086
+      OPENAI_API_KEY: ${OPENAI_API_KEY}
+    ports:
+      - "8086:8086"
+
+  # -------------------------
+  # API GATEWAY
+  # -------------------------
+
   api-gateway:
     build:
       context: ./api-gateway
@@ -62,13 +124,28 @@ services:
     container_name: api-gateway
     environment:
       SERVER_PORT: 8080
-      AUTH_SERVICE_URL: http://auth-service:8081
-      TASK_SERVICE_URL: http://task-service:8082
+      AUTH_SERVICE_URL: [auth-service](http://auth-service:8081)
+      TASK_SERVICE_URL: [task-service](http://task-service:8082)
+
+      # Ajout des endpoints IA dans la gateway
+      AI_PLANNER_URL: [ai-planner-service](http://ai-planner-service:8083)
+      AI_REVIEW_URL: [ai-review-service](http://ai-review-service:8084)
+      AI_OPS_URL: [ai-ops-service](http://ai-ops-service:8085)
+      AI_ASSISTANT_URL: [ai-assistant-service](http://ai-assistant-service:8086)
+
     ports:
       - "8080:8080"
     depends_on:
       - auth-service
       - task-service
+      - ai-planner-service
+      - ai-review-service
+      - ai-ops-service
+      - ai-assistant-service
+
+  # -------------------------
+  # FRONTEND UI
+  # -------------------------
 
   frontend:
     build:
@@ -80,6 +157,9 @@ services:
     depends_on:
       - api-gateway
 
+# -------------------------
+# VOLUMES
+# -------------------------
 volumes:
   auth-db-data:
   task-db-data:
