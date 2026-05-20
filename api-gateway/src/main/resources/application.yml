@@ -19,7 +19,13 @@ spring:
               uri: ${TASK_SERVICE_URL:http://task-service:8082}
               predicates:
                 - Path=/api/tasks/**
-
+            # =========================
+            # AI ASSISTANT SERVICE
+            # =========================
+            - id: ai-assistant-service
+              uri: ${AI_ASSISTANT_SERVICE_URL:http://localhost:8086}
+              predicates:
+                - Path=/api/ai/**
           globalcors:
             cors-configurations:
               '[/**]':
