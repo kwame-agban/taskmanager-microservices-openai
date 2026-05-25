@@ -71,8 +71,8 @@ services:
 
   ai-planner-service:
     build:
-      context: ./ai-planner-service
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: ai-planner-service/Dockerfile
     container_name: ai-planner-service
     environment:
       SERVER_PORT: 8083
@@ -82,8 +82,8 @@ services:
 
   ai-review-service:
     build:
-      context: ./ai-review-service
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: ai-review-service/Dockerfile
     container_name: ai-review-service
     environment:
       SERVER_PORT: 8084
@@ -93,8 +93,8 @@ services:
 
   ai-ops-service:
     build:
-      context: ./ai-ops-service
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: ai-ops-service/Dockerfile
     container_name: ai-ops-service
     environment:
       SERVER_PORT: 8085
@@ -104,8 +104,8 @@ services:
 
   ai-assistant-service:
     build:
-      context: ./ai-assistant-service
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: ai-assistant-service/Dockerfile
     container_name: ai-assistant-service
     environment:
       SERVER_PORT: 8086

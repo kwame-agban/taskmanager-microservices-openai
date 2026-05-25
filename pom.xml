@@ -1,22 +1,17 @@
 <project xmlns="[maven.apache.org](http://maven.apache.org/POM/4.0.0)"
          xmlns:xsi="[w3.org](http://www.w3.org/2001/XMLSchema-instance)"
-         xsi:schemaLocation="[maven.apache.org](http://maven.apache.org/POM/4.0.0)
-                             [maven.apache.org](https://maven.apache.org/xsd/maven-4.0.0.xsd)">
+         xsi:schemaLocation="[maven.apache.org](http://maven.apache.org/POM/4.0.0) [maven.apache.org](https://maven.apache.org/xsd/maven-4.0.0.xsd)">
   <modelVersion>4.0.0</modelVersion>
-
   <groupId>com.example</groupId>
   <artifactId>taskmanager-microservices</artifactId>
   <version>1.0.0</version>
   <packaging>pom</packaging>
-
-  <!-- Parent de BOM Spring Boot (optionnel mais recommandé pour gérer versions) -->
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
     <version>3.2.2</version>
-    <relativePath/> <!-- on prend celui du repo central -->
+    <relativePath/>
   </parent>
-
   <modules>
     <module>api-gateway</module>
     <module>auth-service</module>
@@ -27,8 +22,16 @@
     <module>ai-ops-service</module>
     <module>ai-assistant-service</module>
   </modules>
-
   <properties>
     <java.version>21</java.version>
   </properties>
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>com.example</groupId>
+        <artifactId>ai-common-library</artifactId>
+        <version>1.0.0</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
 </project>

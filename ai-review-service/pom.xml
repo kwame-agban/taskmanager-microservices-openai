@@ -19,7 +19,7 @@
   <dependencies>
     <!-- Dépendance vers la bibliothèque commune -->
     <dependency>
-      <groupId>com.taskmanager.ai</groupId>
+      <groupId>com.example</groupId>
       <artifactId>ai-common-library</artifactId>
       <version>1.0.0</version>
     </dependency>
