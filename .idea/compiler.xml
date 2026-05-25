@@ -20,6 +20,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="ai-assistant-service" options="-parameters" />
+      <module name="ai-common-library" options="-parameters" />
       <module name="ai-ops-service" options="-parameters" />
       <module name="ai-planner-service" options="-parameters" />
       <module name="ai-review-service" options="-parameters" />

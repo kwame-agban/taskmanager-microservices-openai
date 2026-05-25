@@ -2,28 +2,27 @@
          xmlns:xsi="[w3.org](http://www.w3.org/2001/XMLSchema-instance)"
          xsi:schemaLocation="[maven.apache.org](http://maven.apache.org/POM/4.0.0)
                              [maven.apache.org](https://maven.apache.org/xsd/maven-4.0.0.xsd)">
-
   <modelVersion>4.0.0</modelVersion>
 
-  <!-- Le vrai parent du projet -->
   <parent>
     <groupId>com.example</groupId>
     <artifactId>taskmanager-microservices</artifactId>
     <version>1.0.0</version>
+    <relativePath>..</relativePath>
   </parent>
 
   <artifactId>ai-assistant-service</artifactId>
   <packaging>jar</packaging>
-  <name>AI Support Service</name>
+  <name>AI Assistant Service</name>
 
   <dependencies>
-    <!-- Dépendance vers la bibliothèque commune -->
+    <!-- Dépendance au module frère: pas de version nécessaire -->
     <dependency>
-      <groupId>com.taskmanager.ai</groupId>
+      <groupId>com.example</groupId>
       <artifactId>ai-common-library</artifactId>
-      <version>1.0.0</version>
     </dependency>
-    <!-- Dépendances Spring Boot ou autres spécifiques à ce service -->
+
+    <!-- Dépendances Spring Boot spécifiques -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
@@ -38,5 +37,4 @@
       </plugin>
     </plugins>
   </build>
-
 </project>

@@ -1,24 +1,26 @@
-<project>
+<project xmlns="[maven.apache.org](http://maven.apache.org/POM/4.0.0)"
+         xmlns:xsi="[w3.org](http://www.w3.org/2001/XMLSchema-instance)"
+         xsi:schemaLocation="[maven.apache.org](http://maven.apache.org/POM/4.0.0) [maven.apache.org](https://maven.apache.org/xsd/maven-4.0.0.xsd)">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>com.taskmanager.ai</groupId>
+  <parent>
+    <groupId>com.example</groupId>
+    <artifactId>taskmanager-microservices</artifactId>
+    <version>1.0.0</version>
+    <relativePath>..</relativePath>
+  </parent>
+  <groupId>com.example</groupId>
   <artifactId>ai-common-library</artifactId>
-  <version>1.0.0</version>
-  <properties>
-    <maven.compiler.source>21</maven.compiler.source>
-    <maven.compiler.target>21</maven.compiler.target>
-  </properties>
+  <packaging>jar</packaging>
+  <name>AI Common Library</name>
   <dependencies>
-    <!-- Fournit @Component, @Autowired, etc. -->
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-context</artifactId>
-      <version>6.1.3</version>
     </dependency>
-    <!-- Fournit RestTemplate et HttpEntity -->
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-web</artifactId>
-      <version>6.1.3</version>
     </dependency>
   </dependencies>
 </project>
+
