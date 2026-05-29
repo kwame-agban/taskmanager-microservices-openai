@@ -23,7 +23,7 @@ spring:
             # AI ASSISTANT SERVICE
             # =========================
             - id: ai-assistant-service
-              uri: ${AI_ASSISTANT_SERVICE_URL:http://localhost:8086}
+              uri: ${AI_ASSISTANT_SERVICE_URL:http://ai-assistant-service:8086}
               predicates:
                 - Path=/api/ai/**
           globalcors:
@@ -39,6 +39,8 @@ spring:
                   - OPTIONS
                 allowedHeaders: "*"
                 allowCredentials: true
+          default-filters:
+            - DedupeResponseHeader=Access-Control-Allow-Origin Access-Control-Allow-Credentials RETAIN_FIRST
 
 management:
   endpoints:
